@@ -3,3 +3,5 @@ flask-cors
 scikit-learn
 numpy
 pinecone
+PyPDF2
+python-docx
