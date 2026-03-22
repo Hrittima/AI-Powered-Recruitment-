@@ -9,13 +9,13 @@ async function uploadResume(file) {
   formData.append("resume", file);
 
   try {
-    const res = await fetch("https://YOUR-RAILWAY-URL/api/analyze", {
+    const res = await fetch("https://ai-powered-recruitment-production.up.railway.app/api/analyze", {
       method: "POST",
       body: formData
     });
 
     const data = await res.json();
-    console.log(data);
+    console.log("API RESPONSE:", data);
 
     loading.style.display = "none";
 
@@ -29,7 +29,8 @@ async function uploadResume(file) {
       <div class="rank">${data.rank}</div>
     `;
   } catch (err) {
+    console.error(err);
     loading.style.display = "none";
-    resultDiv.innerHTML = "❌ Server error";
+    resultDiv.innerHTML = "❌ Server error (check backend URL)";
   }
 }
