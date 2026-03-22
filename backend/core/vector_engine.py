@@ -1,19 +1,23 @@
 import os
-from sentence_transformers import SentenceTransformer
 from pinecone import Pinecone
-
-# ================= LOAD MODEL =================
-model = SentenceTransformer("all-MiniLM-L6-v2")
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 # ================= PINECONE INIT =================
-pc = Pinecone(api_key=os.getenv("pcsk_BWswk_M1gPcVpPEnbKccym9YYgizWTHaBf1vf7q6VDLR1rEu6xh36WoXU2ddQSed3hv5X"))
+pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+index = pc.Index("resume-index")
 
-index = pc.Index("resume-index")  # your index name
+# ================= TF-IDF VECTORIZER =================
+vectorizer = TfidfVectorizer()
 
+# Store all texts for fitting (simple in-memory)
+corpus = []
 
 # ================= EMBEDDING =================
 def get_embedding(text):
-    return model.encode(text).tolist()
+    corpus.append(text)
+
+    vectors = vectorizer.fit_transform(corpus).toarray()
+    return vectors[-1].tolist()
 
 
 # ================= STORE RESUME =================
@@ -27,6 +31,9 @@ def store_resume(id, text):
 
 # ================= MATCH RESUME =================
 def match_resume(text):
+    if not corpus:
+        return 0  # no baseline yet
+
     vector = get_embedding(text)
 
     result = index.query(
