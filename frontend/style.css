@@ -1,75 +1,179 @@
+/* ================= BASE ================= */
 body {
-  background: radial-gradient(circle, #020617, #000);
-  color: white;
-  font-family: 'Inter', sans-serif;
-  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: #e5e7eb;
 }
 
-nav {
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1f2937;
+}
+
+.navbar a {
+  color: #a5b4fc;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: #6366f1;
+}
+
+/* ================= HERO ================= */
+.hero {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
   padding: 20px;
 }
 
-.hero {
-  margin-top: 100px;
-}
-
+/* ================= CARD ================= */
 .card {
-  margin: 30px auto;
-  padding: 25px;
-  width: 320px;
-  background: rgba(31, 41, 55, 0.8);
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 16px;
+  width: 420px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: 0.3s;
 }
 
-button {
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ================= INPUT ================= */
+input[type="file"] {
   margin-top: 10px;
-  padding: 10px;
+  padding: 12px;
   width: 100%;
   border-radius: 10px;
   border: none;
-  background: linear-gradient(135deg, #6366f1, #22c55e);
+  background: #020617;
   color: white;
+}
+
+/* ================= BUTTON ================= */
+button {
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  border: none;
+  color: white;
+  border-radius: 12px;
   cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
-.result-card {
-  margin-top: 30px;
+button:hover {
+  transform: scale(1.05);
 }
 
-.tag {
-  display: inline-block;
-  margin: 5px;
-  padding: 6px 10px;
-  border-radius: 20px;
-  background: #374151;
+/* ================= RESULT ================= */
+#result {
+  margin-top: 20px;
 }
 
-.missing {
-  background: #ef4444;
-}
-.container {
-  width: 80%;
-  margin: auto;
-  text-align: center;
+/* ================= SCORE ================= */
+.score-circle {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
-.subtitle {
-  opacity: 0.7;
+.rank {
+  margin-bottom: 15px;
+  color: #a5b4fc;
+}
+
+/* ================= PROGRESS ================= */
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #020617;
+  border-radius: 10px;
+  overflow: hidden;
   margin-bottom: 20px;
 }
 
-/* HISTORY */
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #22c55e);
+}
+
+/* ================= KEYWORDS ================= */
+.keywords span {
+  display: inline-block;
+  background: #374151;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin: 4px;
+  font-size: 12px;
+}
+
+/* ================= RECOMMENDATIONS ================= */
+.rec-list {
+  text-align: left;
+  padding-left: 20px;
+}
+
+/* ================= HISTORY ================= */
+.history-list {
+  margin-top: 20px;
+}
+
 .history-card {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 10px;
+  border-radius: 12px;
   background: #1f2937;
+  transition: 0.3s;
 }
 
-/* CHARTS */
+.history-card:hover {
+  transform: scale(1.02);
+  background: #374151;
+}
+
+.score {
+  font-weight: bold;
+  color: #22c55e;
+}
+
+/* ================= BADGE ================= */
+.score-badge {
+  background: #6366f1;
+  padding: 6px 12px;
+  border-radius: 10px;
+  color: white;
+}
+
+/* ================= CHART ================= */
 .charts {
   margin-top: 40px;
   display: flex;
@@ -79,16 +183,35 @@ button {
 }
 
 .chart-box {
-  width: 400px;
+  width: 420px;
   background: #111827;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-/* SCORE BADGE */
-.score-badge {
-  background: #6366f1;
-  padding: 6px 12px;
-  border-radius: 10px;
-  color: white;
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+  opacity: 0.6;
+}
+/* DROP ZONE */
+.drop-zone {
+  border: 2px dashed #6366f1;
+  padding: 30px;
+  border-radius: 12px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.drop-zone:hover {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.drop-zone.dragover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: #22c55e;
 }
