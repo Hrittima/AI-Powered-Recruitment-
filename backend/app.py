@@ -9,11 +9,11 @@ import uuid
 from werkzeug.utils import secure_filename
 
 # CORE IMPORTS
-from core.resume_parser import extract_text
-from core.scoring_engine import score_resume
-from core.ranking_engine import get_rank
-from core.recommendation import recommend_skills
-from core.database import init_db, save_resume, get_all_resumes
+from backend.core.resume_parser import extract_text
+from backend.core.scoring_engine import score_resume
+from backend.core.ranking_engine import get_rank
+from backend.core.recommendation import recommend_skills
+from backend.core.database import init_db, save_resume, get_all_resumes
 # ===============================
 # APP CONFIG
 # ===============================
