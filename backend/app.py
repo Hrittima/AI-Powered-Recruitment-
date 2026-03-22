@@ -1,6 +1,8 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for, flash
-from flask_cors import CORS
+import sys
 import os
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))from flask import Flask, request, jsonify, render_template, redirect, url_for, flash
+from flask_cors import CORS
 import uuid
 from werkzeug.utils import secure_filename
 
