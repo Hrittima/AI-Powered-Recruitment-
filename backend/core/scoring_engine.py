@@ -2,19 +2,33 @@ import re
 
 def score_resume(text):
     text = text.lower()
+
     score = 0
+    matched = []
+    missing = []
 
-    skills = ["python","java","c++","javascript","react","node","flask","sql","mongodb","docker","aws"]
+    skills = [
+        "python", "java", "c++", "javascript",
+        "react", "node", "flask", "django",
+        "sql", "mongodb", "docker", "aws"
+    ]
 
-    for s in skills:
-        if s in text:
+    for skill in skills:
+        if skill in text:
             score += 3
+            matched.append(skill)
+        else:
+            missing.append(skill)
 
-    ai = ["machine learning","deep learning","nlp","tensorflow","pytorch"]
+    ai_keywords = [
+        "machine learning", "deep learning",
+        "nlp", "tensorflow", "pytorch"
+    ]
 
-    for a in ai:
-        if a in text:
+    for word in ai_keywords:
+        if word in text:
             score += 6
+            matched.append(word)
 
     if "project" in text:
         score += 10
@@ -31,4 +45,6 @@ def score_resume(text):
     if len(text.split()) > 300:
         score += 10
 
-    return min(score, 100)
+    score = min(score, 100)
+
+    return score, matched, missing

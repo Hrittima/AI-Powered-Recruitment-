@@ -35,4 +35,7 @@ def get_all_resumes():
 
     conn.close()
 
-    return [{"name": d[0], "score": d[1], "rank": d[2]} for d in data]
+    return [
+        {"name": row[0], "score": row[1], "rank": row[2]}
+        for row in data
+    ]

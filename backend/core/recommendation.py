@@ -1,14 +1,18 @@
 def recommend_skills(text):
     text = text.lower()
-    missing = []
+
+    recs = []
 
     if "machine learning" not in text:
-        missing.append("Add Machine Learning")
+        recs.append("Add Machine Learning projects")
 
     if "project" not in text:
-        missing.append("Add Projects")
+        recs.append("Add Projects section")
 
     if "intern" not in text:
-        missing.append("Add Experience")
+        recs.append("Add Internship/Experience")
 
-    return missing
+    if "python" not in text:
+        recs.append("Add Python skills")
+
+    return recs
