@@ -1,18 +1,34 @@
-def recommend_skills(text):
-    text = text.lower()
-
+def recommend_skills(missing_keywords: list) -> list:
+    """
+    Receives the list of missing skill keywords from scoring_engine
+    and returns human-readable improvement suggestions.
+    """
+    missing = [k.lower() for k in missing_keywords]
     recs = []
 
-    if "machine learning" not in text:
-        recs.append("Add Machine Learning projects")
+    if "machine learning" in missing:
+        recs.append("Add Machine Learning projects or courses")
 
-    if "project" not in text:
-        recs.append("Add Projects section")
+    if "python" in missing:
+        recs.append("Highlight Python skills and projects")
 
-    if "intern" not in text:
-        recs.append("Add Internship/Experience")
+    if "sql" in missing:
+        recs.append("Add SQL / database experience")
 
-    if "python" not in text:
-        recs.append("Add Python skills")
+    if "docker" in missing:
+        recs.append("Learn Docker for containerisation")
 
-    return recs
+    if "aws" in missing:
+        recs.append("Add cloud experience (AWS / GCP / Azure)")
+
+    if "react" in missing or "javascript" in missing:
+        recs.append("Add frontend skills (React / JavaScript)")
+
+    if "flask" in missing or "django" in missing:
+        recs.append("Add a Python web framework (Flask / Django)")
+
+    # Generic suggestions always shown
+    recs.append("Quantify achievements with numbers (e.g. 'improved speed by 30%')")
+    recs.append("Add a Projects section with GitHub links")
+
+    return recs[:6]   # cap at 6 suggestions
