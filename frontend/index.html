@@ -5,41 +5,36 @@
   <title>AI Resume Analyzer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="./style.css">
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
 <nav class="navbar">
   <h2>🤖 AI Resume Analyzer</h2>
   <a href="history.html">Dashboard</a>
 </nav>
 
-<!-- ================= HERO ================= -->
 <section class="hero">
   <h1>Analyze Your Resume with AI</h1>
   <p>Get ATS score, ranking & smart insights instantly 🚀</p>
 </section>
 
-<!-- ================= MAIN ================= -->
 <div class="container">
   <div class="card">
 
     <h2>📄 Upload Resume</h2>
 
-    <!-- DROP ZONE -->
     <div id="dropZone" class="drop-zone">
       <p>📂 Drag & Drop Resume</p>
       <span>or click to upload</span>
-      <input type="file" id="resumeInput" hidden>
     </div>
 
-    <button id="uploadBtn">Analyze Resume</button>
+    <!-- FIXED ID -->
+    <input type="file" id="fileInput" hidden>
+
+    <button onclick="analyzeResume()">Analyze Resume</button>
 
     <p id="loading" style="display:none;">⏳ Analyzing...</p>
 
@@ -48,56 +43,11 @@
   </div>
 </div>
 
-<!-- ================= FOOTER ================= -->
 <footer>
   © 2026 Sagnik Dam | AI Resume Analyzer
 </footer>
 
-<!-- ================= SCRIPT ================= -->
 <script src="./app.js"></script>
-
-<script>
-const dropZone = document.getElementById("dropZone");
-const fileInput = document.getElementById("resumeInput");
-const uploadBtn = document.getElementById("uploadBtn");
-
-let selectedFile = null;
-
-// Click upload
-dropZone.onclick = () => fileInput.click();
-
-fileInput.onchange = () => {
-  selectedFile = fileInput.files[0];
-  dropZone.innerHTML = `<p>✅ ${selectedFile.name}</p>`;
-};
-
-// Drag over
-dropZone.ondragover = (e) => {
-  e.preventDefault();
-  dropZone.classList.add("dragover");
-};
-
-// Drag leave
-dropZone.ondragleave = () => {
-  dropZone.classList.remove("dragover");
-};
-
-// Drop file
-dropZone.ondrop = (e) => {
-  e.preventDefault();
-  selectedFile = e.dataTransfer.files[0];
-  dropZone.innerHTML = `<p>✅ ${selectedFile.name}</p>`;
-};
-
-// Upload button
-uploadBtn.onclick = () => {
-  if (!selectedFile) {
-    alert("Please upload a resume first!");
-    return;
-  }
-  uploadResume(selectedFile);
-};
-</script>
 
 </body>
 </html>
