@@ -56,51 +56,7 @@
 </footer>
 
 <!-- ================= SCRIPT ================= -->
-<script src="./app.js"></script>
-
-<script>
-const dropZone = document.getElementById("dropZone");
-const fileInput = document.getElementById("resumeInput");
-const analyzeBtn = document.getElementById("analyzeBtn");
-
-let selectedFile = null;
-
-// CLICK → OPEN FILE PICKER
-dropZone.onclick = () => fileInput.click();
-
-// FILE SELECT
-fileInput.onchange = () => {
-  selectedFile = fileInput.files[0];
-  dropZone.innerHTML = `<p>✅ ${selectedFile.name}</p>`;
-};
-
-// DRAG OVER
-dropZone.ondragover = (e) => {
-  e.preventDefault();
-  dropZone.classList.add("dragover");
-};
-
-// DRAG LEAVE
-dropZone.ondragleave = () => {
-  dropZone.classList.remove("dragover");
-};
-
-// DROP FILE
-dropZone.ondrop = (e) => {
-  e.preventDefault();
-  selectedFile = e.dataTransfer.files[0];
-  dropZone.innerHTML = `<p>✅ ${selectedFile.name}</p>`;
-};
-
-// BUTTON CLICK
-analyzeBtn.onclick = () => {
-  if (!selectedFile) {
-    alert("Please upload a resume first!");
-    return;
-  }
-  uploadResume(selectedFile); // from app.js
-};
-</script>
+<script src="./app.js"></script
 
 </body>
 </html>
