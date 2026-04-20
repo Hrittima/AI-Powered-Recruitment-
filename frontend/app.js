@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  updateNav();   // from auth.js
+  updateNav();   
 
   let selectedFile = null;
   let lastResumeId = null;
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loading    = document.getElementById("loading");
   const jobDescEl  = document.getElementById("jobDesc");
 
-  // ── File handling ──────────────────────────────────────────────────────────
+  // ── File handling ────
   dropZone.onclick = () => fileInput.click();
   fileInput.onchange = () => { if (fileInput.files[0]) setFile(fileInput.files[0]); };
 
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       lastResumeId = data.resume_id;
 
-      // ── Save to sessionStorage so interview page can read it ──────────────
+      // ── Save to sessionStorage so interview page can read it ───
       sessionStorage.setItem("lastAnalysis", JSON.stringify(data));
 
       renderResult(data);
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // ── Render ─────────────────────────────────────────────────────────────────
+  // ── Render ─────
   function renderResult(data) {
     const score    = data.score    ?? 0;
     const rank     = data.rank     ?? "--";
