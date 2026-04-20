@@ -14,7 +14,7 @@ from io import BytesIO
 from datetime import datetime
 
 
-# ── Color palette ─────────────────────────────────────────────────────────────
+# ── Color palette ──
 PURPLE      = colors.HexColor("#6366f1")
 PURPLE_DARK = colors.HexColor("#4f46e5")
 GREEN       = colors.HexColor("#22c55e")
