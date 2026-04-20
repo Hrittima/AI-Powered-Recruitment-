@@ -4,7 +4,9 @@ def extract_skills(text):
         "machine learning", "deep learning",
         "data structures", "algorithms",
         "flask", "django", "react",
-        "html", "css", "javascript", "Node js", "React Native", "flask", "white", "Powershell"
+        "html", "css", "javascript",
+        "Node js", "React Native", 
+        "flask", "white", "Powershell"
     ]
 
     text = text.lower()
