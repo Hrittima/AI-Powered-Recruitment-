@@ -5,12 +5,12 @@ from sklearn.metrics.pairwise import cosine_similarity
 DEFAULT_SKILLS = [
     "python", "java", "c++", "javascript",
     "react", "node", "flask", "django",
-    "sql", "mongodb", "docker", "aws"
+    "sql", "mongodb", "docker", "aws", "nodejs", "reactnative"
 ]
 
 AI_KEYWORDS = [
     "machine learning", "deep learning",
-    "nlp", "tensorflow", "pytorch"
+    "nlp", "tensorflow", "pytorch", "llm"
 ]
 
 
@@ -20,7 +20,7 @@ def score_resume(text: str, job_description: str = "") -> tuple:
     matched = []
     missing = []
 
-    # ── If job description provided: extract keywords from it ────────────────
+    # ── If job description provided: extract keywords from it ──
     if job_description and job_description.strip():
         jd_lower = job_description.lower()
 
@@ -38,7 +38,7 @@ def score_resume(text: str, job_description: str = "") -> tuple:
         jd_words = re.findall(r'\b[a-z][a-z+#.]{2,}\b', jd_lower)
         dynamic_skills = list(set(jd_words) - {
             "and","the","with","for","our","are","you","that","this",
-            "have","will","can","from","able","must","has","been","also"
+            "have","will","can","from","able","must","has","been","also", "when", "where", "which"
         })
 
         for skill in dynamic_skills[:20]:   # cap at 20
